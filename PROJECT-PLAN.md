@@ -10,6 +10,7 @@ Build a small, mobile-first shopping list app with HTML, CSS, and JavaScript. V1
 
 - Add, edit, delete, and mark an item purchased/unpurchased.
 - Persist the list in `localStorage` across reloads in the same browser profile.
+- V1 supports operations in a single tab only. Concurrent use across multiple tabs and guaranteed cross-tab synchronization are outside V1 scope. Storage failures in the supported single-tab flow must be handled without silent data loss.
 - Responsive, mobile-first interface.
 - PWA manifest, installable assets, and offline app-shell support.
 - GitHub Pages is the target for V1, but no remote, repository, push, or publication is approved yet.

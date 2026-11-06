@@ -1,5 +1,7 @@
 # MuaSamMini Project Guidance
 
+Before planning or implementing any project task, read `PROJECT-PLAN.md` and follow its approved scope, Acceptance Criteria, and Quality Gates.
+
 ## Purpose
 
 MuaSamMini is a mobile-first shopping list web app built with HTML, CSS, and JavaScript. V1 stores list data in the browser with `localStorage` and is intended for release on GitHub Pages as a PWA.

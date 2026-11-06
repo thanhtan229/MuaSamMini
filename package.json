@@ -1,0 +1,10 @@
+{
+  "name": "muasammini",
+  "version": "1.0.0",
+  "description": "Mobile-first shopping list web app (PWA) with local persistence",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs"
+  }
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0284c7">
+  <meta name="description" content="MuaSamMini - Ứng dụng danh sách mua sắm di động, lưu trữ cục bộ, hỗ trợ PWA offline.">
+  <title>MuaSamMini - Danh Sách Mua Sắm</title>
+
+  <!-- Subpath-safe relative links for GitHub Pages compatibility -->
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" type="image/svg+xml" href="./icons/icon.svg">
+  <link rel="apple-touch-icon" href="./icons/icon-192.png">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="brand-wrapper">
+        <div class="app-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+        </div>
+        <h1 class="app-title">MuaSắmMini</h1>
+      </div>
+      <div id="item-count-badge" class="app-badge" aria-label="Tiến độ hoàn thành" title="Đã mua / Tổng số"></div>
+    </header>
+
+    <!-- Storage Alert Banner (Shown if localStorage is corrupted or unavailable) -->
+    <div id="storage-alert-banner" class="alert-banner" role="alert" hidden>
+      <div class="alert-icon" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+          <line x1="12" y1="9" x2="12" y2="13"></line>
+          <line x1="12" y1="17" x2="12.01" y2="17"></line>
+        </svg>
+      </div>
+      <div id="storage-alert-message"></div>
+    </div>
+
+    <!-- Add Item Section -->
+    <section class="input-section" aria-label="Thêm món đồ">
+      <form id="add-form" class="add-form" autocomplete="off">
+        <label for="item-input" class="sr-only">Tên món đồ cần mua</label>
+        <input
+          id="item-input"
+          class="add-input"
+          type="text"
+          name="itemName"
+          placeholder="Thêm món đồ cần mua..."
+          maxlength="200"
+          autocomplete="off"
+          required
+        >
+        <button id="add-btn" class="btn btn-primary" type="submit">
+          Thêm
+        </button>
+      </form>
+    </section>
+
+    <!-- Main List Section -->
+    <main class="list-section" aria-label="Danh sách món đồ">
+      <!-- Empty state -->
+      <div id="empty-state" class="empty-state" hidden>
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+          <line x1="8" y1="21" x2="16" y2="21"></line>
+          <line x1="12" y1="17" x2="12" y2="21"></line>
+        </svg>
+        <p>Danh sách đang trống</p>
+        <small>Nhập tên món hàng ở trên và nhấn "Thêm" để bắt đầu.</small>
+      </div>
+
+      <!-- Active shopping items list -->
+      <ul id="shopping-list" class="shopping-list" role="list"></ul>
+    </main>
+
+    <!-- Screen Reader Live Announcements -->
+    <div id="live-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <small>MuaSamMini V1 &bull; Dữ liệu lưu an toàn trên máy của bạn &bull; Hỗ trợ ngoại tuyến</small>
+    </footer>
+  </div>
+
+  <!-- Subpath-safe relative module script -->
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>

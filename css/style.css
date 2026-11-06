@@ -1,0 +1,440 @@
+/**
+ * MuaSamMini - Mobile-First Stylesheet
+ * Accessible, responsive, high-contrast, touch-friendly UI.
+ */
+
+:root {
+  --color-primary: #0284c7;
+  --color-primary-hover: #0369a1;
+  --color-primary-focus: rgba(2, 132, 199, 0.4);
+  --color-bg: #f8fafc;
+  --color-card-bg: #ffffff;
+  --color-text-main: #0f172a;
+  --color-text-muted: #64748b;
+  --color-border: #e2e8f0;
+  --color-border-hover: #cbd5e1;
+  --color-danger: #ef4444;
+  --color-danger-hover: #dc2626;
+  --color-warning-bg: #fef3c7;
+  --color-warning-border: #f59e0b;
+  --color-warning-text: #92400e;
+  --color-purchased: #94a3b8;
+  --color-purchased-bg: #f1f5f9;
+
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --min-touch-target: 44px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary: #38bdf8;
+    --color-primary-hover: #0ea5e9;
+    --color-primary-focus: rgba(56, 189, 248, 0.4);
+    --color-bg: #0f172a;
+    --color-card-bg: #1e293b;
+    --color-text-main: #f1f5f9;
+    --color-text-muted: #94a3b8;
+    --color-border: #334155;
+    --color-border-hover: #475569;
+    --color-danger: #f87171;
+    --color-danger-hover: #ef4444;
+    --color-warning-bg: #451a03;
+    --color-warning-border: #b45309;
+    --color-warning-text: #fde68a;
+    --color-purchased: #64748b;
+    --color-purchased-bg: #162032;
+  }
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-bg);
+  color: var(--color-text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Accessibility Focus Ring */
+*:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Global hidden rule to ensure [hidden] elements stay hidden despite flex/grid rules */
+[hidden] {
+  display: none !important;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Container */
+.app-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 16px 16px 48px 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Header */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 4px 4px 4px;
+}
+
+.brand-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.app-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.app-badge {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  min-width: 36px;
+  text-align: center;
+}
+
+.app-badge:empty {
+  display: none !important;
+}
+
+/* Alert Banner */
+.alert-banner {
+  background-color: var(--color-warning-bg);
+  border: 1px solid var(--color-warning-border);
+  color: var(--color-warning-text);
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.4;
+}
+
+.alert-icon {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Add Item Form */
+.add-form {
+  display: flex;
+  gap: 8px;
+  background-color: var(--color-card-bg);
+  padding: 6px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.add-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 10px 14px;
+  font-size: 1rem;
+  color: var(--color-text-main);
+  min-height: var(--min-touch-target);
+  font-family: inherit;
+}
+
+.add-input:focus {
+  outline: none;
+}
+
+.add-form:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-focus);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  border: 1px solid transparent;
+  min-height: var(--min-touch-target);
+  padding: 0 18px;
+  font-size: 0.95rem;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-text-muted);
+  border-color: var(--color-border);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-purchased-bg);
+  color: var(--color-text-main);
+}
+
+.btn-sm {
+  min-height: 36px;
+  padding: 0 12px;
+  font-size: 0.85rem;
+}
+
+.btn-icon {
+  width: var(--min-touch-target);
+  height: var(--min-touch-target);
+  min-width: var(--min-touch-target);
+  min-height: var(--min-touch-target);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.btn-icon:hover {
+  color: var(--color-text-main);
+  background-color: var(--color-purchased-bg);
+}
+
+.delete-btn:hover {
+  color: var(--color-danger);
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
+/* Shopping List */
+.shopping-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.shopping-item {
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.shopping-item:hover {
+  border-color: var(--color-border-hover);
+}
+
+.shopping-item.is-purchased {
+  background-color: var(--color-purchased-bg);
+  border-color: transparent;
+}
+
+.item-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  width: 100%;
+  min-height: var(--min-touch-target);
+  user-select: none;
+}
+
+.item-checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.custom-checkbox {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  border: 2px solid var(--color-text-muted);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  background-color: transparent;
+}
+
+.item-checkbox:focus-visible + .custom-checkbox {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.item-checkbox:checked + .custom-checkbox {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.item-checkbox:checked + .custom-checkbox::after {
+  content: "";
+  width: 6px;
+  height: 10px;
+  border: solid #ffffff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) translate(-1px, -1px);
+}
+
+.item-name {
+  font-size: 1rem;
+  color: var(--color-text-main);
+  overflow-wrap: break-word;
+  word-break: break-word;
+  transition: color 0.15s ease, text-decoration 0.15s ease;
+}
+
+.item-name.name-purchased {
+  text-decoration: line-through;
+  color: var(--color-purchased);
+}
+
+.item-actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+/* Edit Form */
+.edit-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-width: 0;
+  padding: 4px 0;
+}
+
+.edit-input {
+  flex: 1;
+  min-width: 0;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  font-size: 1rem; /* >= 16px to prevent iOS auto-zoom on focus */
+  color: var(--color-text-main);
+  font-family: inherit;
+  min-height: var(--min-touch-target); /* >= 44px */
+}
+
+.edit-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.edit-btn-action {
+  min-height: var(--min-touch-target); /* >= 44px for touch targets */
+  padding: 0 14px;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 48px 16px;
+  color: var(--color-text-muted);
+}
+
+.empty-state svg {
+  margin-bottom: 12px;
+  stroke: var(--color-text-muted);
+  opacity: 0.7;
+}
+
+.empty-state p {
+  font-size: 1.05rem;
+  margin-bottom: 4px;
+}
+
+.empty-state small {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+/* Footer info */
+.app-footer {
+  margin-top: auto;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  padding-top: 24px;
+}
